@@ -13,6 +13,7 @@ public class Pathfinder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nodeIndex = 0;
         agent = gameObject.GetComponent<NavMeshAgent>();
         nodes = FindObjectsOfType<PathfindingNode>();
         nodes = nodes.OrderBy(_node => _node.gameObject.name).ToArray();
@@ -31,6 +32,9 @@ public class Pathfinder : MonoBehaviour
 
     private void UpdatePath()
     {
-        agent.SetDestination(nodes[nodeIndex++].Position);
+        if(nodeIndex < nodes.Length)
+        {
+            agent.SetDestination(nodes[nodeIndex++].Position);
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace StateMachines
         [SerializeField] private States currentState = States.LookingForKey;
         [SerializeField] private Transform controlled; // the thing that will be affected by our statemachines
         [SerializeField] private float speed = 1f; // This isn't really in a statemachine, this is just for testing
+        public Key[] keys;
 
         // This is used to change states from anywhere within the code that has reference
         // to the StateMachine
@@ -41,6 +42,8 @@ namespace StateMachines
 
             states.Add(States.LookingForKey, LookingForKey);
             states.Add(States.LookForEnd, Rotate);
+
+            keys = FindObjectsOfType<Key>();
             
         }
 
@@ -56,14 +59,33 @@ namespace StateMachines
                 Debug.LogError($"No State funtion set for state {currentState}.");
         }
 
+
         // The funtion that will run when we are in the traanslate state.
         public void LookingForKey()
         {
             Key[] keys = FindObjectsOfType<Key>();
             // Loop through keys
+            
+
             // Find closest
             AgentSmith smith = FindObjectOfType<AgentSmith>();
-            smith.agent.SetDestination(FindObjectOfType<Key>().transform.position);
+
+            Key closestKey = null;
+            float closestDistance = float.MaxValue;
+            foreach (Key key in keys)
+            {
+                float distance = Vector3.Distance(smith.transform.position, key.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestKey = key;
+                    closestDistance = distance;
+                }
+            }
+
+            smith.agent.SetDestination(closestKey.transform.position);
+
+            
+         
 
 
 
