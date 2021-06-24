@@ -68,7 +68,7 @@ namespace StateMachines
             
 
             // Find closest
-            AgentSmith smith = FindObjectOfType<AgentSmith>();
+            Pathfinder smith = FindObjectOfType<Pathfinder>();
 
             Key closestKey = null;
             float closestDistance = float.MaxValue;

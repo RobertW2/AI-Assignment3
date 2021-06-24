@@ -13,7 +13,7 @@ namespace StateMachines
         // [SerializeField] private float offset = 1;
 
         public GameObject door;
-        public GameObject Obsticle;
+     
 
         /*  void Update()
           {
@@ -31,14 +31,14 @@ namespace StateMachines
         public void OnTriggerEnter(Collider other)
         {
 
-            Key[] keys = FindObjectsOfType<Key>();
+          //  Key[] keys = FindObjectsOfType<Key>();
             // Loop through keys
             // Find closest
-            AgentSmith smith = FindObjectOfType<AgentSmith>();
-            smith.agent.SetDestination(FindObjectOfType<Key>().transform.position);
+          //  Pathfinder smith = FindObjectOfType<Pathfinder>();
+           // smith.agent.SetDestination(FindObjectOfType<Key>().transform.position);
 
-            door.SetActive(false);
-            Obsticle.SetActive(true);
+           door.SetActive(false);
+          //  Obsticle.SetActive(true);
         }
 
         /* public void OnTriggerExit(Collider other)

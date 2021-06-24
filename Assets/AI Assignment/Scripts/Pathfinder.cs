@@ -5,10 +5,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Pathfinder : MonoBehaviour
 {
-    private PathfindingNode[] nodes;
-    private int nodeIndex;
+    public PathfindingNode[] nodes;
+    public int nodeIndex;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()

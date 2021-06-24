@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject door;
+    public GameObject key1;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        // We got the key
+        Destroy(gameObject);
+
+        door.SetActive(false);
     }
 }
